@@ -6,73 +6,73 @@ using namespace std;
 #define SIDE 3
 #define COMPUTERMOVE 'O'
 #define HUMANMOVE 'X'
-void showBoard(char board[][SIDE])
-{
-printf("\t\t\t %c | %c | %c \n", board[0][0], board[0][1], board[0][2]);
-printf("\t\t\t-----------\n");
-printf("\t\t\t %c | %c | %c \n", board[1][0], board[1][1], board[1][2]);
-printf("\t\t\t-----------\n");
-printf("\t\t\t %c | %c | %c \n\n", board[2][0], board[2][1], board[2][2]);
-}
-void showInstructions()
-{
-printf("\nChoose a cell numbered from 1 to 9 as below and play\n\n");
-printf("\t\t\t 1 | 2 | 3 \n");
-printf("\t\t\t-----------\n");
-printf("\t\t\t 4 | 5 | 6 \n");
-printf("\t\t\t-----------\n");
-printf("\t\t\t 7 | 8 | 9 \n\n");
-}
-void initialise(char board[][SIDE])
-{
-// Initially the board to '*' as said
-for (int i=0; i<SIDE; i++)
-{
-for (int j=0; j<SIDE; j++)
-board[i][j] = '*';
-}
-}
-void declareWinner(int whoseTurn)
-{
-if (whoseTurn == COMPUTER)
-printf("COMPUTER has won\n");
-else
-printf("HUMAN has won\n");
-}
-bool rowCrossed(char board[][SIDE])
-{
-for (int i=0; i<SIDE; i++)
-{
-if (board[i][0] == board[i][1] &&
-board[i][1] == board[i][2] &&
-board[i][0] != '*')
-return (true);
-}
+         void showBoard(char board[][SIDE])
+           {
+               printf("\t\t\t %c | %c | %c \n", board[0][0], board[0][1], board[0][2]);
+               printf("\t\t\t-----------\n");
+               printf("\t\t\t %c | %c | %c \n", board[1][0], board[1][1], board[1][2]);
+               printf("\t\t\t-----------\n");
+               printf("\t\t\t %c | %c | %c \n\n", board[2][0], board[2][1], board[2][2]);
+           }
+         void showInstructions()
+          {
+             printf("\nChoose a cell numbered from 1 to 9 as below and play\n\n");
+             printf("\t\t\t 1 | 2 | 3 \n");
+             printf("\t\t\t-----------\n");
+             printf("\t\t\t 4 | 5 | 6 \n");
+             printf("\t\t\t-----------\n");
+             printf("\t\t\t 7 | 8 | 9 \n\n");
+         }
+        void initialise(char board[][SIDE])
+        {
+                              // Initially the board to '*' as said
+            for (int i=0; i<SIDE; i++)
+             {
+                for (int j=0; j<SIDE; j++)
+                      board[i][j] = '*';
+               }
+        }
+       void declareWinner(int whoseTurn)
+       {
+       if (whoseTurn == COMPUTER)
+          printf("COMPUTER has won\n");
+       else
+          printf("HUMAN has won\n");
+      }
+      bool rowCrossed(char board[][SIDE])
+      {
+         for (int i=0; i<SIDE; i++)
+         {
+            if (board[i][0] == board[i][1] &&
+                board[i][1] == board[i][2] &&
+                board[i][0] != '*')
+            return (true);
+        }
+       return(false);
+      }
+     bool columnCrossed(char board[][SIDE])
+    {
+       for (int i=0; i<SIDE; i++)
+       {
+          if (board[0][i] == board[1][i] &&
+              board[1][i] == board[2][i] &&
+              board[0][i] != '*')
+          return (true);
+      }
+    return(false);
+   }
+    bool diagonalCrossed(char board[][SIDE])
+   {
+        if (board[0][0] == board[1][1] &&
+            board[1][1] == board[2][2] &&
+            board[0][0] != '*')
+           return(true);
+       if (board[0][2] == board[1][1] &&
+           board[1][1] == board[2][0] &&
+           board[0][2] != '*')
+     return(true);
 return(false);
-}
-bool columnCrossed(char board[][SIDE])
-{
-for (int i=0; i<SIDE; i++)
-{
-if (board[0][i] == board[1][i] &&
-board[1][i] == board[2][i] &&
-board[0][i] != '*')
-return (true);
-}
-return(false);
-}
-bool diagonalCrossed(char board[][SIDE])
-{
-if (board[0][0] == board[1][1] &&
-board[1][1] == board[2][2] &&
-board[0][0] != '*')
-return(true);
-if (board[0][2] == board[1][1] &&
-board[1][1] == board[2][0] &&
-board[0][2] != '*')
-return(true);
-return(false);
-}
+   }
 bool gameOver(char board[][SIDE])
 {
 return(rowCrossed(board) || columnCrossed(board) || diagonalCrossed(board) );
@@ -230,24 +230,24 @@ whoseTurn = COMPUTER;
 declareWinner(whoseTurn);
 }
 }
-int main()
-{
-printf("\n-------------------------------------------------------------------\n\n");
-printf("\t\t\t Tic-Tac-Toe\n");
-printf("\n-------------------------------------------------------------------\n\n");
-char cont='y';
-do {
-char choice;
-printf("Do you want to start first?(y/n) : ");
-scanf(" %c", &choice);
-if(choice=='n')
-playTicTacToe(COMPUTER);
-else if(choice=='y')
-playTicTacToe(HUMAN);
-else
-printf("Invalid choice\n");
-printf("\nDo you want to quit(y/n) : ");
-scanf(" %c", &cont);
-} while(cont=='n');
+                         int main()
+                           {
+                           printf("\n-------------------------------------------------------------------\n\n");
+                           printf("\t\t\t Tic-Tac-Toe\n");
+                           printf("\n-------------------------------------------------------------------\n\n");
+                           char cont='y';
+                           do {
+                                 char choice;
+                                 printf("Do you want to start first?(y/n) : ");
+                                 scanf(" %c", &choice);
+                                 if(choice=='n')
+                                     playTicTacToe(COMPUTER);
+                                 else if(choice=='y')
+                                     playTicTacToe(HUMAN);
+                                 else
+                                     printf("Invalid choice\n");
+                                     printf("\nDo you want to quit(y/n) : ");
+                                     scanf(" %c", &cont);
+                                } while(cont=='n');
 return (0);
 }
